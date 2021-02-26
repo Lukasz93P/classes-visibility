@@ -1,0 +1,22 @@
+{
+    "name": "lukasz93p/class-visibility",
+    "autoload": {
+        "psr-4": {
+            "Lukasz93P\\ClassVisibility\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lukasz93P\\ClassVisibility\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "haydenpierce/class-finder": "^0.4.3",
+        "symfony/console": "^5.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "^9.5"
+    }
+}
