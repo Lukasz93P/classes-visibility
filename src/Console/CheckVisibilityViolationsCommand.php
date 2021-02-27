@@ -50,6 +50,8 @@ class CheckVisibilityViolationsCommand extends Command
             ->getViolations(NamespacePath::create($input->getArgument(self::ARGUMENT_NAMESPACE)));
 
         if ($visibilityViolations->isEmpty()) {
+            $output->writeln("<info>No violations found.</info>");
+
             return self::SUCCESS;
         }
 

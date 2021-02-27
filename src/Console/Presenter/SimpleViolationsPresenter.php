@@ -32,7 +32,7 @@ class SimpleViolationsPresenter implements ViolationsPresenter
 
     private function generateViolationMessage(VisibilityViolation $violation): string
     {
-        return "{$violation->getClassWhichViolatedVisibility()} cannot use {$violation->getClassWhichShouldNotBeVisible()}"
+        return "<error>{$violation->getClassWhichViolatedVisibility()} cannot use {$violation->getClassWhichShouldNotBeVisible()}</error>"
             . PHP_EOL;
     }
 }
