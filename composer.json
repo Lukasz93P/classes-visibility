@@ -33,7 +33,7 @@
         "phpunit/phpunit": "^9.5"
     },
     "bin": [
-        "class-visibility.php"
+        "class-visibility"
     ],
     "minimum-stability": "stable"
 }
