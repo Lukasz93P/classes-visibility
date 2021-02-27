@@ -1,5 +1,18 @@
 {
     "name": "lukasz93p/class-visibility",
+    "description": "Private and protected classes for PHP.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukasz93P",
+            "email": "lukasz9.3@interia.pl"
+        }
+    ],
+    "keywords": [
+        "private classes",
+        "visibility"
+    ],
     "autoload": {
         "psr-4": {
             "Lukasz93P\\ClassVisibility\\": "src/"
@@ -18,5 +31,9 @@
     "require-dev": {
         "roave/security-advisories": "dev-master",
         "phpunit/phpunit": "^9.5"
-    }
+    },
+    "bin": [
+        "class-visibility"
+    ],
+    "minimum-stability": "stable"
 }
