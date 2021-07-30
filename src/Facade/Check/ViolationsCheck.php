@@ -21,12 +21,17 @@ class ViolationsCheck implements ClassesVisibility
         return new self($repository);
     }
 
-    public function getViolations(NamespacePath $namespace): VisibilityViolations
+    /**
+     * @param NamespacePath[] $namespaces
+     */
+    public function getViolations(array $namespaces): VisibilityViolations
     {
         $violations = VisibilityViolations::create();
 
-        foreach ($this->repository->getAllClasses($namespace) as $classToCheck) {
-            $violations = $violations->merge($classToCheck->checkVisibilityViolation());
+        foreach ($namespaces as $namespace) {
+            foreach ($this->repository->getAllClasses($namespace) as $classToCheck) {
+                $violations = $violations->merge($classToCheck->checkVisibilityViolation());
+            }
         }
 
         return $violations;

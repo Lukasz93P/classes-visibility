@@ -45,7 +45,7 @@ class CheckVisibilityViolationsCommandTest extends TestCase
 
         self::assertEquals(
             Command::SUCCESS,
-            $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACE => $namespace])
+            $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACES => $namespace])
         );
     }
 
@@ -58,7 +58,7 @@ class CheckVisibilityViolationsCommandTest extends TestCase
 
         self::assertEquals(
             Command::FAILURE,
-            $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACE => $namespace])
+            $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACES => $namespace])
         );
     }
 
@@ -86,7 +86,7 @@ class CheckVisibilityViolationsCommandTest extends TestCase
 
         $this->presenterMock->method('present')->willReturn($presenterMessage);
 
-        $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACE => $namespace]);
+        $this->commandTester->execute([CheckVisibilityViolationsCommand::ARGUMENT_NAMESPACES => $namespace]);
 
         $display = $this->commandTester->getDisplay();
 

@@ -27,6 +27,6 @@ class ClassesVisibilityTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        ClassesVisibilityFactory::create()->getViolations($namespace);
+        ClassesVisibilityFactory::create()->getViolations([$namespace]);
     }
 }

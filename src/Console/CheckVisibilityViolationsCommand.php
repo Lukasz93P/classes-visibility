@@ -14,13 +14,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CheckVisibilityViolationsCommand extends Command
 {
-    public const ARGUMENT_NAMESPACE = 'namespace';
+    public const ARGUMENT_NAMESPACES = 'namespaces';
 
     private const NAME = 'check';
 
     private const HELP_MESSAGE =
         <<<MES
-            Command checks all classes from given namespace for visibility violations.
+            Command checks all classes from given namespaces for visibility violations.
             Returns 1 along with message for each violations when there are some violations.
             0 otherwise.
         MES;
@@ -39,15 +39,19 @@ class CheckVisibilityViolationsCommand extends Command
     {
         parent::configure();
 
-        $this->addArgument(self::ARGUMENT_NAMESPACE, InputArgument::REQUIRED, 'Namespace to check')
-            ->setDescription('Check visibility violations in given namespace')
+        $this->addArgument(self::ARGUMENT_NAMESPACES, InputArgument::REQUIRED, 'Namespace to check')
+            ->setDescription('Check visibility violations in given coma-separated namespaces')
             ->setHelp(self::HELP_MESSAGE);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $visibilityViolations = $this->classesVisibility
-            ->getViolations(NamespacePath::create($input->getArgument(self::ARGUMENT_NAMESPACE)));
+        $namespacesToCheck = array_map(
+            fn(string $namespace) => NamespacePath::create($namespace),
+            explode(',', $input->getArgument(self::ARGUMENT_NAMESPACES))
+        );
+
+        $visibilityViolations = $this->classesVisibility->getViolations($namespacesToCheck);
 
         if ($visibilityViolations->isEmpty()) {
             $output->writeln("<info>No violations found.</info>");

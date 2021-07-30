@@ -10,5 +10,8 @@ use Lukasz93P\ClassVisibility\Visibility\Violations\VisibilityViolations;
 
 interface ClassesVisibility
 {
-    public function getViolations(NamespacePath $namespace): VisibilityViolations;
+    /**
+     * @param NamespacePath $namespaces
+     */
+    public function getViolations(array $namespaces): VisibilityViolations;
 }

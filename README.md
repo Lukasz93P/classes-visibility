@@ -50,4 +50,8 @@ To check if a given namespace violates visibility rules run
 ```shell
 vendor/bin/class-visibility check <namespace to check>
 ```
+or
+```shell
+vendor/bin/class-visibility check <namespace to check>,<another namespace>,<next namespace>
+```
 

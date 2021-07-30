@@ -70,7 +70,7 @@ class ViolationsCheckTest extends TestCase
     {
         $this->repositoryMock->method('getAllClasses')->with($namespace)->willReturn([]);
 
-        self::assertEmpty($this->systemUnderTest->getViolations($namespace)->toArray());
+        self::assertEmpty($this->systemUnderTest->getViolations([$namespace])->toArray());
     }
 
     /**
@@ -83,7 +83,7 @@ class ViolationsCheckTest extends TestCase
     ): void {
         $this->repositoryMock->method('getAllClasses')->with($namespace)->willReturn($classesToCheck);
 
-        self::assertCount($allViolationsQuantity, $this->systemUnderTest->getViolations($namespace)->toArray());
+        self::assertCount($allViolationsQuantity, $this->systemUnderTest->getViolations([$namespace])->toArray());
     }
 
     protected function setUp(): void
